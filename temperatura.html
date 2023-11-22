@@ -4,8 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temperatura</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    Teste
+    <div class="box">
+        <div class="box-graus">
+            <h2>Como está o tempo hoje?</h2> <br>
+            <p>Digite a temperatura:</p><br>
+            <input type="text" id="celsius"> ºC
+            
+            <input type="text" id="fahrenheit"> ºF<br><br>
+        </div>
+
+        <div class="box-botton">
+            <button type="button" onclick="temperaturaSensacao()">Qual sensação?</button> <br>
+        </div>
+        
+        <div class="box-txt">
+            <input type="text" id="sensacao" readonly><br> <!-- readonly vai bloquear a pessoa a escrever dentro-->
+        </div>        
+    </div>
+        
+
+
+    <script>
+        function temperaturaSensacao() {
+            let celsius = document.getElementById("celsius").value;
+            celsius = parseFloat(celsius);
+            let fahrenheit = document.getElementById("fahrenheit").value;
+            fahrenheit = parseFloat(fahrenheit);
+            /*celsius = (grausFahrenheit - 32) * 5/9;
+            fahrenheit = (grausCelsius * 9/5) + 32;*/
+            let conversor = (fahrenheit - 32) * 5/9;
+            let imprimir;
+
+            if (celsius <= 15 || conversor <= 15) {
+                imprimir= "Está frio";
+            } else if (celsius >=  26 || conversor >=  26){
+                imprimir = "Está quente";
+            } else {
+                imprimir = "Temperatura agrádavel"
+            }
+
+            document.getElementById("sensacao").value = imprimir;
+        }
+    </script>
 </body>
 </html>
