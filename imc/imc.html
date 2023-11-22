@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <link rel="stylesheet" type="text/css" href="imc.css">
+
+</head>
+<body>
+    <div class="CalculadoraIMC">
+        <h2>Calcular IMC: </h2> <br>
+    
+        <p>Digite sua Altura(m)</p>
+        <input type="text" id="altura"> <br><br>
+            
+        <p>Digite seu Peso(kg)</p>
+        <input type="text" id="peso"><br><br>
+        
+        <button type="button" onclick="calcularIMC()">Calcular IMC</button> <br><br>
+
+        <div class="Condicoes">
+            <p>IMC: </p> <input type="text" id="imc" readonly><br><br> <!-- readonly vai bloquear a pessoa a escrever dentro-->
+            <p>Resultado: </p> <input type="text" id="resultado" readonly><br><br>
+            <p>Sentença: </p> <input type="text" id="sentenca" readonly><br><br>
+        </div>
+    </div>
+   
+    <script>
+        function calcularIMC() {
+            let peso = document.getElementById("peso").value;
+            peso = parseFloat(peso);
+            let altura = document.getElementById("altura").value;
+            altura = parseFloat(altura); 
+            if(altura > 3){
+                altura = altura/100;
+            }
+            let calculadorIMC = peso / (altura*altura);
+            calculadorIMC = calculadorIMC.toFixed(1);
+            let imprimir;
+            let add = 0, p1 = 0, p2 = 0; //engordar ou emagrecer
+                p1 = 18.5 * altura * altura; //Para chegar ao Abaixo do Peso
+                p2 = 24.9 * altura * altura; //Para chegar ao PesoNormal
+            let imprimirMensagem = "Parabéns, dentro do peso!";
+                       
+    
+            if (calculadorIMC <= 16.9) {
+                imprimir= "Muito abaixo do peso";
+                add = p1 - peso;
+                add = add.toFixed(2);
+                imprimirMensagem = "Precisa engordar: " + add + " kg";
+            } else if (calculadorIMC <= 18.4){
+                imprimir= "Abaixo do peso";
+                add = p1 - peso;
+                add = add.toFixed(2);
+                imprimirMensagem = "Precisa engordar: " + add + " kg";
+            } else if (calculadorIMC <= 24.9){
+                imprimir= "Peso Normal";
+            } else if (calculadorIMC <= 29.9){
+                imprimir= "Acima do Peso";
+                add = peso - p2;
+                add = add.toFixed(2);
+                imprimirMensagem = "Precisa emagrecer: " + add + " kg";
+            } else if (calculadorIMC <= 34.9){
+                imprimir= "Obesidade grauI";
+                add = peso - p2;
+                add = add.toFixed(2);
+                imprimirMensagem = "Precisa emagrecer: " + add + " kg";
+            } else if (calculadorIMC <= 40){
+                imprimir= "Obesidade grauII"; 
+                add = peso - p2;
+                add = add.toFixed(2);
+                imprimirMensagem = "Precisa emagrecer: " + add + " kg";
+            } else if (calculadorIMC >= 40) {
+                imprimir= "Obesidade grauIII";
+                add = peso - p2;
+                add = add.toFixed(2);
+                imprimirMensagem = "Precisa emagrecer: " + add + " kg";
+            } else {
+                imprimir= "Erro!"
+            }
+
+            document.getElementById("imc").value = calculadorIMC;
+            document.getElementById("resultado").value = imprimir;
+            document.getElementById("sentenca").value = imprimirMensagem;
+        }
+    </script>
+</body>
+</html>
