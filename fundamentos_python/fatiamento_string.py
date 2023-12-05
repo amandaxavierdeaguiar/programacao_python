@@ -7,7 +7,7 @@
 quantidade_a = frase_usuario.count("A")
 primeiro_a = frase_usuario.find("A") + 1
 ultimo_a = (frase_usuario.rfind("A") - frase_usuario.count(" ")) + 1
-""" Estou vendo a posição do ultímo A (a partir da direita) e o count está verificando o espaços."""
+Estou vendo a posição do ultímo A (a partir da direita) e o count está verificando o espaços.
 
 print(f"Sua Frase aparece {quantidade_a} letras A")
 print(f"A primeira letra A que aparece é na {primeiro_a} posição")

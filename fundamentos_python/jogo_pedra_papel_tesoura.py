@@ -11,7 +11,7 @@ print("Boa sorte!\n")
 
 jogo_pc = random.randint(1, 3)
 
-"""print(jogo_pc) - Apenas para teste, ver a opcao do random"""2
+"""print(jogo_pc) - Apenas para teste, ver a opcao do random"""
 time.sleep(2)
 jogador = int(input("Escolha a sua opção:\n[ 1 ] Pedra\n[ 2 ] papel\n[ 3 ] tesoura?\nDigite: "))
 
